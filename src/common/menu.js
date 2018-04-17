@@ -2,29 +2,26 @@ import { isUrl } from '../utils/utils';
 
 
 const menuData = [{
-  name: '实时监控',
-  icon: 'dashboard',
-  path: 'dashboard'
-},{
-  name: '信息录入',
+  name: '充电站管理',
   icon: 'form',
-  path: 'list',
-  children: [{
-      name: '电池信息',
-      path: 'analysis',
-    }, {
-      name: '充电模块',
-      path: 'monitor',
-    }, {
-      name: '充电桩',
-      path: 'workplace',
-      // hideInMenu: true,
-    }]
-},{
+  path: 'stations/list',
+}, {
+  name: '充电站创建',
+  path: 'stations/create',
+  hideInMenu: true,
+}, {
+  name: '充电站编辑',
+  path: 'stations/edit',
+  hideInMenu: true,
+}, {
   name: '充电记录',
   icon: 'profile',
-  path: 'table-list'
-}]
+  path: 'form',
+}, {
+  name: '充电站管理',
+  icon: 'profile',
+  path: 'table-list',
+}];
 // const menuData = [{
 //   name: 'dashboard',
 //   icon: 'dashboard',

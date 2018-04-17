@@ -164,7 +164,7 @@ export default class WaterWave extends PureComponent {
         sp += 0.07;
         drawSin();
       }
-      self.timer = requestAnimationFrame(render);
+      self.timer = httpAnimationFrame(render);
     }
 
     render();

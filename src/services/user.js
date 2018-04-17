@@ -1,9 +1,9 @@
-import request from '../utils/request';
+import http from '../utils/http';
 
 export async function query() {
-  return request('/api/users');
+  return http('/users');
 }
 
 export async function queryCurrent() {
-  return request('/api/currentUser');
+  return http('/currentUser');
 }

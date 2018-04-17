@@ -1,20 +1,37 @@
 import { stringify } from 'qs';
-import request from '../utils/request';
+import http from '../utils/http';
+
+export async function getStations(query) {
+  return http(`/stations?${stringify(query)}`);
+}
+
+export async function getStationById({ id }) {
+  return http(`/stations/${id}`);
+}
+
+
+export async function createStation(body) {
+  return http.post('/stations', body);
+}
+
+export async function updateStation({ id, body }) {
+  return http.put(`/stations/${id}`, body);
+}
 
 export async function queryProjectNotice() {
-  return request('/api/project/notice');
+  return http('/project/notice');
 }
 
 export async function queryActivities() {
-  return request('/api/activities');
+  return http('/activities');
 }
 
 export async function queryRule(params) {
-  return request(`/api/rule?${stringify(params)}`);
+  return http(`/rule?${stringify(params)}`);
 }
 
 export async function removeRule(params) {
-  return request('/api/rule', {
+  return http('/rule', {
     method: 'POST',
     body: {
       ...params,
@@ -24,7 +41,7 @@ export async function removeRule(params) {
 }
 
 export async function addRule(params) {
-  return request('/api/rule', {
+  return http('/rule', {
     method: 'POST',
     body: {
       ...params,
@@ -34,46 +51,46 @@ export async function addRule(params) {
 }
 
 export async function fakeSubmitForm(params) {
-  return request('/api/forms', {
+  return http('/forms', {
     method: 'POST',
     body: params,
   });
 }
 
 export async function fakeChartData() {
-  return request('/api/fake_chart_data');
+  return http('/fake_chart_data');
 }
 
 export async function queryTags() {
-  return request('/api/tags');
+  return http('/tags');
 }
 
 export async function queryBasicProfile() {
-  return request('/api/profile/basic');
+  return http('/profile/basic');
 }
 
 export async function queryAdvancedProfile() {
-  return request('/api/profile/advanced');
+  return http('/profile/advanced');
 }
 
 export async function queryFakeList(params) {
-  return request(`/api/fake_list?${stringify(params)}`);
+  return http(`/fake_list?${stringify(params)}`);
 }
 
 export async function fakeAccountLogin(params) {
-  return request('/api/login/account', {
+  return http('/login/account', {
     method: 'POST',
     body: params,
   });
 }
 
 export async function fakeRegister(params) {
-  return request('/api/register', {
+  return http('/register', {
     method: 'POST',
     body: params,
   });
 }
 
 export async function queryNotices() {
-  return request('/api/notices');
+  return http('/notices');
 }

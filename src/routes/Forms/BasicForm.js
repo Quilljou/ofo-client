@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'dva';
 import {
   Form, Input, DatePicker, Select, Button, Card, InputNumber, Radio, Icon, Tooltip,
@@ -15,7 +15,7 @@ const { TextArea } = Input;
   submitting: loading.effects['form/submitRegularForm'],
 }))
 @Form.create()
-export default class BasicForms extends PureComponent {
+export default class BasicForms extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.form.validateFieldsAndScroll((err, values) => {
@@ -55,7 +55,6 @@ export default class BasicForms extends PureComponent {
         <Card bordered={false}>
           <Form
             onSubmit={this.handleSubmit}
-            hideRequiredMark
             style={{ marginTop: 8 }}
           >
             <FormItem
