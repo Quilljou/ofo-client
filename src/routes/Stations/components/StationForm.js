@@ -1,7 +1,8 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'dva';
+import { Input, Form, Button } from 'antd';
 import { BasicForm } from '../../../components';
-import { Row, Col, Card, Input, Form, Select, Icon, Button, Dropdown, Menu, InputNumber, DatePicker, Modal, message, Badge, Divider } from 'antd';
+
 const FormItem = Form.Item;
 
 @connect(({ loading, station }) => ({

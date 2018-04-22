@@ -1,6 +1,7 @@
 import { stringify } from 'qs';
 import http from '../utils/http';
 
+//  站
 export async function getStations(query) {
   return http(`/stations?${stringify(query)}`);
 }
@@ -17,6 +18,25 @@ export async function createStation(body) {
 export async function updateStation({ id, body }) {
   return http.put(`/stations/${id}`, body);
 }
+
+//  桩
+export async function getEquipments({ stationId }) {
+  return http(`/stations/${stationId}/equipments`);
+}
+
+export async function getEquipmentById({ stationId, equipmentId }) {
+  return http(`/stations/${stationId}/equipments/${equipmentId}`);
+}
+
+
+export async function createEquipment({ stationId, body }) {
+  return http.post(`/stations/${stationId}/equipments`, body);
+}
+
+export async function updateEquipment({ stationId, equipmentId, body }) {
+  return http.put(`/stations/${stationId}/equipments/${equipmentId}`, body);
+}
+
 
 export async function queryProjectNotice() {
   return http('/project/notice');

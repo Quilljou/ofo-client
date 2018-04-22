@@ -12,7 +12,7 @@
     "analyze": "cross-env ANALYZE=true roadhog build",
     "lint:style": "stylelint \"src/**/*.less\" --syntax less",
     "lint": "eslint --ext .js src mock tests && npm run lint:style",
-    "lint:fix": "eslint --fix --ext .js src mock tests && npm run lint:style",
+    "lint:fix": "eslint --fix --ext .js",
     "lint-staged": "lint-staged",
     "lint-staged:js": "eslint --ext .js",
     "test": "roadhog test",
@@ -81,8 +81,11 @@
     "nightmare": "^2.10.0"
   },
   "lint-staged": {
-    "**/*.{js,jsx}": "lint-staged:js",
-    "**/*.less": "stylelint --syntax less"
+    "*.js": [
+      "npm run lint:fix",
+      "git add"
+    ],
+    "*.less": "stylelint --syntax less"
   },
   "browserslist": [
     "> 1%",
