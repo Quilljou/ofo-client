@@ -5,5 +5,5 @@ export async function query() {
 }
 
 export async function queryCurrent() {
-  return http('/currentUser');
+  return http('/self');
 }

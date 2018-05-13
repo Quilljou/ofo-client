@@ -84,9 +84,9 @@ class BasicLayout extends React.PureComponent {
         isMobile: mobile,
       });
     });
-    // this.props.dispatch({
-    //   type: 'user/fetchCurrent',
-    // });
+    this.props.dispatch({
+      type: 'user/fetchCurrent',
+    });
   }
   getPageTitle() {
     const { routerData, location } = this.props;
@@ -126,10 +126,10 @@ class BasicLayout extends React.PureComponent {
     });
   }
   handleMenuClick = ({ key }) => {
-    if (key === 'triggerError') {
-      this.props.dispatch(routerRedux.push('/exception/trigger'));
-      return;
-    }
+    // if (key === 'triggerError') {
+    //   this.props.dispatch(routerRedux.push('/exception/trigger'));
+    //   return;
+    // }
     if (key === 'logout') {
       this.props.dispatch({
         type: 'login/logout',

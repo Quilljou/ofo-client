@@ -11,33 +11,24 @@ const { UserName, Password, Submit } = Login;
   submitting: loading.effects['login/login'],
 }))
 export default class LoginPage extends Component {
-  state = {
-    type: 'account',
-    autoLogin: true,
-  }
-
-  onTabChange = (type) => {
-    this.setState({ type });
-  }
+  // onTabChange = (type) => {
+  //   this.setState({ type });
+  // }
 
   handleSubmit = (err, values) => {
-    const { type } = this.state;
     if (!err) {
       this.props.dispatch({
         type: 'login/login',
-        payload: {
-          ...values,
-          type,
-        },
+        payload: values,
       });
     }
   }
 
-  changeAutoLogin = (e) => {
-    this.setState({
-      autoLogin: e.target.checked,
-    });
-  }
+  // changeAutoLogin = (e) => {
+  //   this.setState({
+  //     autoLogin: e.target.checked,
+  //   });
+  // }
 
   renderMessage = (content) => {
     return (
@@ -58,13 +49,13 @@ export default class LoginPage extends Component {
             login.status === 'error' &&
             login.type === 'account' &&
             !login.submitting &&
-            this.renderMessage('账户或密码错误（admin/888888）')
+            this.renderMessage('账户或密码错误')
           }
-          <UserName name="userName" placeholder="用户名admin/user" />
-          <Password name="password" placeholder="密码888888/123456" />
+          <UserName name="username" placeholder="用户名" />
+          <Password name="password" placeholder="密码" />
           <div>
-            <Checkbox checked={this.state.autoLogin} onChange={this.changeAutoLogin}>自动登录</Checkbox>
-            <a style={{ float: 'right' }} href="">忘记密码</a>
+            {/* <Checkbox checked={this.state.autoLogin} onChange={this.changeAutoLogin}>自动登录</Checkbox> */}
+            {/* <a style={{ float: 'right' }} href="">忘记密码</a> */}
           </div>
           <Submit loading={submitting}>登录</Submit>
         </Login>

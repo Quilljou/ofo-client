@@ -1,6 +1,5 @@
 import { stringify } from 'qs';
 import http from '../utils/http';
-
 //  站
 export async function getStations(query) {
   return http(`/stations?${stringify(query)}`);
@@ -35,6 +34,16 @@ export async function createEquipment({ stationId, body }) {
 
 export async function updateEquipment({ stationId, equipmentId, body }) {
   return http.put(`/stations/${stationId}/equipments/${equipmentId}`, body);
+}
+
+// auth
+export async function login(body) {
+  return http({
+    url: '/login',
+    method: 'POST',
+    headers: { 'content-type': 'application/x-www-form-urlencoded' },
+    params: body,
+  });
 }
 
 
@@ -97,12 +106,6 @@ export async function queryFakeList(params) {
   return http(`/fake_list?${stringify(params)}`);
 }
 
-export async function fakeAccountLogin(params) {
-  return http('/login/account', {
-    method: 'POST',
-    body: params,
-  });
-}
 
 export async function fakeRegister(params) {
   return http('/register', {
