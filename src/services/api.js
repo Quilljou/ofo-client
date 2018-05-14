@@ -38,12 +38,7 @@ export async function updateEquipment({ stationId, equipmentId, body }) {
 
 // auth
 export async function login(body) {
-  return http({
-    url: '/login',
-    method: 'POST',
-    headers: { 'content-type': 'application/x-www-form-urlencoded' },
-    params: body,
-  });
+  return http.post('/login', body);
 }
 
 

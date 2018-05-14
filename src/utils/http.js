@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { notification } from 'antd';
 import { project } from '../consts';
+import store from '../index';
 
 
 const http = axios.create({
@@ -11,6 +12,13 @@ const http = axios.create({
 http.interceptors.response.use(
   response => response,
   (error) => {
+    const { dispatch } = store;
+    const { status } = error.name;
+    if (status === 401) {
+      return dispatch({
+        type: 'login/logout',
+      });
+    }
     notification.error({
       message: (error.response && error.response.statusText) || '网络错误',
       description: error.response ? error.response.data.message : error.message,
